@@ -16,7 +16,7 @@ const Fase = sequelize.define('Fase', {
   },
 }, {
   timestamps: false,
-  tableName: 'Fase'
+  tableName: 'Fase',
 });
 
 module.exports = Fase;

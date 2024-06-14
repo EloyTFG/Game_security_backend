@@ -1,6 +1,8 @@
+// src/models/desafioModel.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/config');
-const Fase = require('./faseModel');
+const Fase = require('./faseModel'); // Importa Fase después de haber sido definido
+const Pista = require('./pistaModel'); // Importa Fase después de haber sido definido
 
 const Desafio = sequelize.define('Desafio', {
   id_desafio: {
@@ -24,14 +26,16 @@ const Desafio = sequelize.define('Desafio', {
     type: DataTypes.INTEGER,
     references: {
       model: Fase,
-      key: 'id_fase'
-    }
+      key: 'id_fase',
+    },
+    allowNull: false,
   }
 }, {
   timestamps: false,
-  tableName: 'Desafio'
+  tableName: 'Desafio',
 });
 
 Desafio.belongsTo(Fase, { foreignKey: 'id_fase' });
-
+Fase.hasMany(Desafio, { foreignKey: 'id_fase' });
+Desafio.hasMany(Pista, { foreignKey: 'id_desafio' });
 module.exports = Desafio;

@@ -24,6 +24,5 @@ const Pista = sequelize.define('Pista', {
   tableName: 'Pista'
 });
 
-Pista.belongsTo(Desafio, { foreignKey: 'id_desafio' });
 
 module.exports = Pista;
