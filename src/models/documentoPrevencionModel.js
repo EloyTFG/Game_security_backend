@@ -24,6 +24,5 @@ const DocumentoPrevencion = sequelize.define('DocumentoPrevencion', {
   tableName: 'DocumentoPrevencion'
 });
 
-DocumentoPrevencion.belongsTo(Desafio, { foreignKey: 'id_desafio' });
 
 module.exports = DocumentoPrevencion;

@@ -24,6 +24,5 @@ const DocumentoAyuda = sequelize.define('DocumentoAyuda', {
   tableName: 'DocumentoAyuda'
 });
 
-DocumentoAyuda.belongsTo(Desafio, { foreignKey: 'id_desafio' });
 
 module.exports = DocumentoAyuda;

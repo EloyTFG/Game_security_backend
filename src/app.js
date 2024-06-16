@@ -28,6 +28,7 @@ const userRoutes = require('./routes/userRoutes');
 const challengeRoutes = require('./routes/challengeRoutes');
 const faseRoutes = require('./routes/fases_desaRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const desafioRoutes = require('./routes/desafioRoutes');
 const topRoutes = require('./routes/topRoutes');
 
 
@@ -43,6 +44,7 @@ app.use('/api/users', userRoutes);
 app.use('/api', faseRoutes);
 app.use('/api', topRoutes);
 app.use('/admin-api', adminRoutes);
+app.use('/admin-api', desafioRoutes);
 // Conectar a MySQL y sincronizar modelos
 sequelize.sync()
   .then(() => console.log('MySQL conectado y modelos sincronizados'))
