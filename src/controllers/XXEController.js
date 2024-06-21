@@ -1,4 +1,4 @@
-// controllers/xxeController.js
+
 const xml2js = require('xml2js');
 const path = require('path');
 const fs = require('fs');
@@ -6,13 +6,13 @@ const fs = require('fs');
 exports.submitComment = (req, res) => {
     const { comment } = req.body;
 
-    // Configuración insegura que permite DTDs
+    
     const parser = new xml2js.Parser({
         explicitArray: false,
         ignoreAttrs: false,
         normalizeTags: true,
         explicitRoot: true,
-        dtd: true // Permitir DTDs para vulnerabilidad XXE
+        dtd: true 
     });
 
     parser.parseString(comment, (err, result) => {
@@ -20,7 +20,7 @@ exports.submitComment = (req, res) => {
             return res.status(400).json({ message: 'Error al procesar el comentario', error: err.message });
         }
 
-        // Verificar si se accedió a datos sensibles como el contenido del directorio raíz
+        
         const sensitiveData = result.comment?.data;
 
         if (sensitiveData) {

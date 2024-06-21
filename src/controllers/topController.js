@@ -19,7 +19,7 @@ exports.getAllUsersProgress = [
         group: ['Progreso.id_usuario', 'Usuario.id_usuario']
       });
 
-      // Formatear la respuesta para devolver el nombre del usuario y la suma de su puntuación
+      
       const formattedData = progressData.map(item => ({
         nombre_usuario: item.Usuario.nombre_usuario,
         progreso: item.dataValues.total_puntuacion

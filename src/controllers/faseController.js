@@ -1,8 +1,8 @@
-// controllers/faseController.js
+
 const Fase = require('../models/faseModel');
 const Desafio = require('../models/desafioModel');
 
-// Función para obtener todas las fases con sus desafíos
+
 exports.getFasesWithDesafios = async (req, res) => {
   try {
     const fases = await Fase.findAll({
@@ -18,7 +18,7 @@ exports.getFasesWithDesafios = async (req, res) => {
   }
 };
 
-// Función para obtener los desafíos de una fase específica por ID
+
 exports.getDesafiosByFaseId = async (req, res) => {
     try {
       const id_fase = req.params.id_fase;

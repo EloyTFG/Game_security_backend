@@ -1,4 +1,4 @@
-// challengeController.js
+
 const mysql = require('mysql2');
 
 const createTempDatabase = (userId) => {
@@ -148,7 +148,7 @@ exports.getUsers = (req, res) => {
       }
 
       res.json({ users: results });
-      connection.end(); // Cerrar la conexión después de la consulta
+      connection.end(); 
     });
   });
 };

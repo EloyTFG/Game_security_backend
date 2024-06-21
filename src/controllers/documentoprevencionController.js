@@ -1,4 +1,4 @@
-// controllers/documentoAyudaController.js
+
 
 const DocumentoPrevencion= require('../models/documentoPrevencionModel');
 const Desafio = require('../models/desafioModel');

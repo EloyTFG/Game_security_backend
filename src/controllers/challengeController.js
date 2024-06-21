@@ -1,4 +1,4 @@
-// controllers/challengeController.js
+
 const mysql = require('mysql2');
 
 const createTempDatabase = (userId) => {
@@ -102,7 +102,7 @@ exports.endSqlInjectionChallenge = async (req, res) => {
   }
 };
 
-// Nueva función para obtener usuarios
+
 
 exports.getUsers = (req, res) => {
     const { dbName } = req.params;
@@ -126,7 +126,7 @@ exports.getUsers = (req, res) => {
         }
   
         res.json({ users: results });
-        connection.end(); // Cerrar la conexión después de la consulta
+        connection.end(); 
       });
     });
   };

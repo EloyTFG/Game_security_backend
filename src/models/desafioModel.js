@@ -1,10 +1,11 @@
-// src/models/desafioModel.js
+
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/config');
-const Fase = require('./faseModel'); // Importa Fase después de haber sido definido
-const Pista = require('./pistaModel'); // Importa Fase después de haber sido definido
-const DocumentoAyuda = require('./documentoAyudaModel'); // Importa Fase después de haber sido definido
-const DocumentoPrevencion = require('./documentoPrevencionModel'); // Importa Fase después de haber sido definido
+const Fase = require('./faseModel'); 
+const Pista = require('./pistaModel'); 
+const DocumentoAyuda = require('./documentoAyudaModel'); 
+const DocumentoPrevencion = require('./documentoPrevencionModel');
+const Progreso = require('./progresoModel');  
 
 const Desafio = sequelize.define('Desafio', {
   id_desafio: {
@@ -37,10 +38,20 @@ const Desafio = sequelize.define('Desafio', {
   tableName: 'Desafio',
 });
 
-Desafio.belongsTo(Fase, { foreignKey: 'id_fase' });
 Fase.hasMany(Desafio, { foreignKey: 'id_fase' });
+Desafio.belongsTo(Fase, { foreignKey: 'id_fase' });
+
 Desafio.hasMany(Pista, { foreignKey: 'id_desafio' });
+Pista.belongsTo(Desafio, { foreignKey: 'id_desafio' });
+
 Desafio.hasMany(DocumentoAyuda, { foreignKey: 'id_desafio' });
+DocumentoAyuda.belongsTo(Desafio, { foreignKey: 'id_desafio' });
+
 Desafio.hasMany(DocumentoPrevencion, { foreignKey: 'id_desafio' });
+DocumentoPrevencion.belongsTo(Desafio, { foreignKey: 'id_desafio' });
+
+
+
+
 
 module.exports = Desafio;

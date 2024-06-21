@@ -36,7 +36,4 @@ const Progreso = sequelize.define('Progreso', {
   tableName: 'Progreso'
 });
 
-Progreso.belongsTo(Usuario, { foreignKey: 'id_usuario' });
-Progreso.belongsTo(Desafio, { foreignKey: 'id_desafio' });
-
 module.exports = Progreso;

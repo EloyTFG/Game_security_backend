@@ -6,7 +6,7 @@ exports.createProgreso = async (req, res) => {
   try {
     const { id_usuario, id_desafio, puntuacion, tiempo_invertido } = req.body;
 
-    // Verifica si el usuario y el desafío existen
+    
     const usuario = await Usuario.findByPk(id_usuario);
     const desafio = await Desafio.findByPk(id_desafio);
 

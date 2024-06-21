@@ -1,4 +1,4 @@
-// routes/faseRoutes.js
+
 const express = require('express');
 const { getFasesWithDesafios,getDesafiosByFaseId } = require('../controllers/faseController');
 const router = express.Router();
@@ -11,7 +11,7 @@ router.get('/fases/:id_fase', getDesafiosByFaseId);
 
 const {getDesafioById} = require('../controllers/desafioControler');
 
-// Ruta para obtener un desafío específico con sus pistas
+
 router.get('/challenge/:id_desafio', getDesafioById);
 
 router.get('/desafio/:id_desafio/documentosayuda', documentoAyudaController.getDocumentosByDesafioId);

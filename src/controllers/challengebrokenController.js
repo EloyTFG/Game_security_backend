@@ -1,4 +1,4 @@
-// controllers/challengeController.js
+
 const mysql = require('mysql2');
 
 const createTempDatabase = (userId, challengeType) => {
@@ -70,7 +70,7 @@ exports.startBrokenAccessControlChallenge = async (req, res) => {
 
 exports.checkAccess = (req, res) => {
   const { dbName, resource } = req.body;
-  const userRole = 'user'; // Supongamos que el usuario tiene un rol 'user' para este ejemplo
+  const userRole = 'user'; 
 
   const connection = mysql.createConnection({
     host: 'localhost',

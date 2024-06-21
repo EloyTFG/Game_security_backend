@@ -1,4 +1,4 @@
-// cleanup.js
+
 const mysql = require('mysql2');
 
 const deleteTempDatabases = async () => {

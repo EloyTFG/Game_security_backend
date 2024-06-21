@@ -1,7 +1,10 @@
-const { DataTypes } = require('sequelize');
+
+const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../config/config');
 
-const Fase = sequelize.define('Fase', {
+class Fase extends Model {}
+
+Fase.init({
   id_fase: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -15,8 +18,10 @@ const Fase = sequelize.define('Fase', {
     type: DataTypes.STRING,
   },
 }, {
-  timestamps: false,
+  sequelize,
+  modelName: 'Fase',
   tableName: 'Fase',
+  timestamps: false,
 });
 
 module.exports = Fase;

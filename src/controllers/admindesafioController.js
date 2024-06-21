@@ -1,4 +1,4 @@
-// src/controllers/desafioController.js
+
 const jwt = require('jsonwebtoken');
 const Desafio = require('../models/desafioModel');
 const Fase = require('../models/faseModel');
@@ -7,7 +7,7 @@ const Usuario = require('../models/usuarioModel');
 const DocumentoAyuda = require('../models/documentoAyudaModel');
 const DocumentoPrevencion = require('../models/documentoPrevencionModel');
 
-// Middleware para verificar el token y rol de administrador
+
 const verifyAdmin = async (req, res, next) => {
   try {
     const token = req.headers.authorization?.split(' ')[1];
@@ -26,7 +26,7 @@ const verifyAdmin = async (req, res, next) => {
   }
 };
 
-// Función para crear desafíos con pistas
+
 exports.createDesafio = [
   verifyAdmin,
   async (req, res) => {
@@ -110,9 +110,9 @@ exports.updateDesafio = [
       await Desafio.update(updatedData, { where: { id_desafio: id_desafio } });
 
       if (pistas && Array.isArray(pistas)) {
-        // Eliminar pistas antiguas
+        
         await Pista.destroy({ where: { id_desafio: id_desafio } });
-        // Añadir nuevas pistas
+        
         await Promise.all(pistas.map(async (pista) => {
           await Pista.create({
             informacion_pista: pista,
@@ -122,9 +122,9 @@ exports.updateDesafio = [
       }
 
       if (documentosAyuda && Array.isArray(documentosAyuda)) {
-        // Eliminar documentos de ayuda antiguos
+        
         await DocumentoAyuda.destroy({ where: { id_desafio: id_desafio } });
-        // Añadir nuevos documentos de ayuda
+        
         await Promise.all(documentosAyuda.map(async (doc) => {
           await DocumentoAyuda.create({
             informacion_vulnerabilidad: doc,
@@ -134,9 +134,9 @@ exports.updateDesafio = [
       }
 
       if (documentosPrevencion && Array.isArray(documentosPrevencion)) {
-        // Eliminar documentos de prevención antiguos
+        
         await DocumentoPrevencion.destroy({ where: { id_desafio: id_desafio } });
-        // Añadir nuevos documentos de prevención
+        
         await Promise.all(documentosPrevencion.map(async (doc) => {
           await DocumentoPrevencion.create({
             informacion_prevencion: doc,
@@ -169,7 +169,7 @@ exports.updateDesafio = [
     }
   }
 ];
-// Función para eliminar desafíos
+
 exports.deleteDesafio = [
   verifyAdmin,
   async (req, res) => {
@@ -182,7 +182,7 @@ exports.deleteDesafio = [
 
       await DocumentoAyuda.destroy({ where: { id_desafio: id_desafio } });
       await DocumentoPrevencion.destroy({ where: { id_desafio: id_desafio } });
-      await Pista.destroy({ where: { id_desafio: id_desafio } }); // Eliminar pistas asociadas
+      await Pista.destroy({ where: { id_desafio: id_desafio } }); 
       await Desafio.destroy({ where: { id_desafio: id_desafio } });
 
       res.status(200).json({ message: 'Challenge deleted successfully.' });
@@ -192,7 +192,7 @@ exports.deleteDesafio = [
   }
 ];
 
-// Función para obtener la lista de todos los desafíos
+
 exports.getAllDesafios = [
   verifyAdmin,
   async (req, res) => {
@@ -221,7 +221,7 @@ exports.getAllDesafios = [
   }
 ];
 
-// Función para obtener un desafío específico por ID
+
 exports.getDesafioById = [
   verifyAdmin,
   async (req, res) => {
@@ -253,7 +253,7 @@ exports.getDesafioById = [
   }
 ];
 
-// Función para obtener la lista de todas las fases
+
 exports.getAllFases = [
   verifyAdmin,
   async (req, res) => {
