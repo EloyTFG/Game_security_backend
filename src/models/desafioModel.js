@@ -38,19 +38,6 @@ const Desafio = sequelize.define('Desafio', {
   tableName: 'Desafio',
 });
 
-Fase.hasMany(Desafio, { foreignKey: 'id_fase' });
-Desafio.belongsTo(Fase, { foreignKey: 'id_fase' });
-
-Desafio.hasMany(Pista, { foreignKey: 'id_desafio' });
-Pista.belongsTo(Desafio, { foreignKey: 'id_desafio' });
-
-Desafio.hasMany(DocumentoAyuda, { foreignKey: 'id_desafio' });
-DocumentoAyuda.belongsTo(Desafio, { foreignKey: 'id_desafio' });
-
-Desafio.hasMany(DocumentoPrevencion, { foreignKey: 'id_desafio' });
-DocumentoPrevencion.belongsTo(Desafio, { foreignKey: 'id_desafio' });
-
-
 
 
 

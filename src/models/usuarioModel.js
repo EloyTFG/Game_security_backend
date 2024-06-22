@@ -43,13 +43,6 @@ const Usuario = sequelize.define('Usuario', {
   tableName: 'Usuario'
 });
 
-Usuario.belongsTo(Rol, { foreignKey: 'id_rol' });
-
-Usuario.hasMany(Progreso, { foreignKey: 'id_usuario'  });
-
-
-Usuario.hasMany(Logro, { foreignKey: 'id_usuario'  });
-
 
 
 module.exports = Usuario;

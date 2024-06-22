@@ -9,7 +9,7 @@ router.get('/fases', getFasesWithDesafios);
 router.get('/fases/:id_fase', getDesafiosByFaseId);
 
 
-const {getDesafioById} = require('../controllers/desafioControler');
+const {getDesafioById} = require('../controllers/desafioController');
 
 
 router.get('/challenge/:id_desafio', getDesafioById);

@@ -1,27 +1,44 @@
+const sequelize = require('../config/config'); // Asegúrate de que la ruta es correcta
+const Usuario = require('./usuarioModel');
+const Progreso = require('./progresoModel');
+const Logro = require('./logroModel');
+const Rol = require('./rolModel');
+const Fase = require('./faseModel'); 
+const Pista = require('./pistaModel'); 
+const DocumentoAyuda = require('./documentoAyudaModel'); 
+const DocumentoPrevencion = require('./documentoPrevencionModel');
+const Desafio = require('./desafioModel'); 
 
-const path = require('path');
-const fs = require('fs');
-const sequelize = require('../config/config');
-const Sequelize = require('sequelize');
-
-const models = {};
+// Definir relaciones
+Usuario.belongsTo(Rol, { foreignKey: 'id_rol', as: 'rol' });
+Usuario.hasMany(Progreso, { foreignKey: 'id_usuario', as: 'progresos' });
+Usuario.hasMany(Logro, { foreignKey: 'id_usuario', as: 'logros' });
 
 
-fs.readdirSync(__dirname)
-  .filter(file => file.endsWith('.js') && file !== 'index.js')
-  .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-    models[model.name] = model;
-  });
+
+Fase.hasMany(Desafio, { foreignKey: 'id_fase' });
+Desafio.belongsTo(Fase, { foreignKey: 'id_fase' });
+
+Desafio.hasMany(Pista, { foreignKey: 'id_desafio' });
+Pista.belongsTo(Desafio, { foreignKey: 'id_desafio' });
+
+Desafio.hasMany(DocumentoAyuda, { foreignKey: 'id_desafio' });
+DocumentoAyuda.belongsTo(Desafio, { foreignKey: 'id_desafio' });
+
+Desafio.hasMany(DocumentoPrevencion, { foreignKey: 'id_desafio' });
+DocumentoPrevencion.belongsTo(Desafio, { foreignKey: 'id_desafio' });
 
 
-Object.keys(models).forEach(modelName => {
-  if (models[modelName].associate) {
-    models[modelName].associate(models);
-  }
-});
 
-models.sequelize = sequelize;
-models.Sequelize = Sequelize;
-
-module.exports = models;
+module.exports = {
+  Usuario,
+  Progreso,
+  Logro,
+  Rol,
+  Fase,
+  Pista,
+  DocumentoAyuda,
+  DocumentoPrevencion,
+  Desafio,
+  sequelize,
+};
