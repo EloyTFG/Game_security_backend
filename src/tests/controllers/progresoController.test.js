@@ -6,7 +6,7 @@ const Progreso = require('../../models/progresoModel');
 const Usuario = require('../../models/usuarioModel');
 const Desafio = require('../../models/desafioModel');
 
-// Mock de los modelos
+
 jest.mock('../../models/progresoModel');
 jest.mock('../../models/usuarioModel');
 jest.mock('../../models/desafioModel');
@@ -14,7 +14,7 @@ jest.mock('../../models/desafioModel');
 const app = express();
 app.use(bodyParser.json());
 
-// Definimos una ruta de prueba que usa el controlador
+
 app.post('/progreso', progresoController.createProgreso);
 
 describe('Progreso Controller Tests', () => {

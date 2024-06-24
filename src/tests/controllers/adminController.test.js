@@ -1,6 +1,6 @@
 const request = require('supertest');
 const jwt = require('jsonwebtoken');
-const app = require('../../app'); // Ajusta la ruta según tu estructura
+const app = require('../../app'); 
 const Usuario = require('../../models/usuarioModel');
 
 jest.mock('jsonwebtoken');
@@ -41,7 +41,7 @@ describe('Admin Controller Tests', () => {
     describe('updateUser', () => {
         it('should update a user successfully', async () => {
             jwt.verify.mockReturnValue({ id: 1 });
-            Usuario.findOne.mockResolvedValueOnce({ id_usuario: 1, id_rol: 1 }); // Usuario que realiza la solicitud
+            Usuario.findOne.mockResolvedValueOnce({ id_usuario: 1, id_rol: 1 }); 
 
             Usuario.findOne.mockResolvedValueOnce({
                 id_usuario: 2,
@@ -65,7 +65,7 @@ describe('Admin Controller Tests', () => {
                 .send({ id_usuario: 2, nombre_completo: 'Updated Name', nombre_usuario: 'updatedusername' })
                 .set('Authorization', 'Bearer testtoken');
 
-            console.log(res.body); // Depurar la respuesta para ver el contenido
+            console.log(res.body); 
             expect(res.statusCode).toEqual(200);
             
         });
@@ -131,11 +131,11 @@ describe('Admin Controller Tests', () => {
 
     describe('getUserById', () => {
         it('should return a user by ID', async () => {
-            // Simula la verificación del token JWT y devuelve un usuario con rol de administrador
+            
             jwt.verify.mockReturnValue({ id: 1 });
-            Usuario.findOne.mockResolvedValueOnce({ id_usuario: 1, id_rol: 1 }); // Usuario que realiza la solicitud
+            Usuario.findOne.mockResolvedValueOnce({ id_usuario: 1, id_rol: 1 }); 
 
-            // Simula la búsqueda del usuario por ID
+            
             Usuario.findOne.mockResolvedValueOnce({
                 id_usuario: 2,
                 nombre_completo: 'User Two',
@@ -148,14 +148,14 @@ describe('Admin Controller Tests', () => {
                 .get('/admin-api/users/2')
                 .set('Authorization', 'Bearer testtoken');
 
-            // Depuración para verificar los datos devueltos
+            
             expect(res.statusCode).toEqual(200);
             expect(res.body.nombre_completo).toBe('User Two');
         });
 
         it('should return 404 if user not found', async () => {
             jwt.verify.mockReturnValue({ id: 1 });
-            Usuario.findOne.mockResolvedValueOnce({ id_usuario: 1, id_rol: 1 }); // Usuario que realiza la solicitud
+            Usuario.findOne.mockResolvedValueOnce({ id_usuario: 1, id_rol: 1 }); 
 
             Usuario.findOne.mockResolvedValue({ id_usuario: 1, id_rol: 1 });
             Usuario.findOne.mockResolvedValueOnce(null);

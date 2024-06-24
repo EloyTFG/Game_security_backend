@@ -5,7 +5,7 @@ const desafioController = require('../../controllers/desafioController');
 const Desafio = require('../../models/desafioModel');
 const Pista = require('../../models/pistaModel');
 
-// Mock de los modelos
+
 jest.mock('../../models/desafioModel', () => ({
   findByPk: jest.fn(),
 }));
@@ -17,7 +17,7 @@ jest.mock('../../models/pistaModel', () => ({
 const app = express();
 app.use(bodyParser.json());
 
-// Definimos una ruta de prueba que usa el controlador
+
 app.get('/challenge/:id_desafio', desafioController.getDesafioById);
 
 describe('Desafio Controller Tests', () => {

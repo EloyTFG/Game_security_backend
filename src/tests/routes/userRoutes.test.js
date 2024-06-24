@@ -1,4 +1,4 @@
-// src/tests/routes/authRoutes.test.js
+
 const request = require('supertest');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use('/api', authRoutes);
 
-// Mock de los controladores
+
 jest.mock('../../controllers/authController', () => ({
     register: (req, res) => res.status(201).json({ message: 'User registered successfully' }),
     login: (req, res) => res.status(200).json({ token: 'fake-token' }),

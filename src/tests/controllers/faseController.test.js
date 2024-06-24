@@ -5,7 +5,7 @@ const faseController = require('../../controllers/faseController');
 const Fase = require('../../models/faseModel');
 const Desafio = require('../../models/desafioModel');
 
-// Mock de los modelos
+
 jest.mock('../../models/faseModel', () => ({
   findAll: jest.fn(),
   findByPk: jest.fn(),
@@ -14,7 +14,7 @@ jest.mock('../../models/faseModel', () => ({
 const app = express();
 app.use(bodyParser.json());
 
-// Definimos una ruta de prueba que usa el controlador
+
 app.get('/fases', faseController.getFasesWithDesafios);
 app.get('/fases/:id_fase', faseController.getDesafiosByFaseId);
 

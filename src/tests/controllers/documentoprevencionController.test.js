@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const documentoPrevencionController = require('../../controllers/documentoprevencionController');
 const DocumentoPrevencion = require('../../models/documentoPrevencionModel');
 
-// Mock de los modelos
+
 jest.mock('../../models/documentoPrevencionModel', () => ({
   findAll: jest.fn(),
 }));
@@ -12,7 +12,7 @@ jest.mock('../../models/documentoPrevencionModel', () => ({
 const app = express();
 app.use(bodyParser.json());
 
-// Definimos una ruta de prueba que usa el controlador
+
 app.get('/desafio/:id_desafio/documentosprevencion', documentoPrevencionController.getDocumentosByDesafioId);
 
 describe('Documento Prevencion Controller Tests', () => {

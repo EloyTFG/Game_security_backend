@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const desafioRoutes = require('../../routes/desafioRoutes');
 
-// Mock de las dependencias y controladores
+
 jest.mock('../../controllers/admindesafioController', () => ({
   createDesafio: jest.fn((req, res) => res.status(201).json({ message: 'Challenge created successfully.', challenge: req.body })),
   updateDesafio: jest.fn((req, res) => res.status(200).json({ message: 'Challenge updated successfully.', challenge: req.body })),

@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const documentoAyudaController = require('../../controllers/documentoayudaController');
 const DocumentoAyuda = require('../../models/documentoAyudaModel');
 
-// Mock de los modelos
+
 jest.mock('../../models/documentoAyudaModel', () => ({
   findAll: jest.fn(),
 }));
@@ -12,7 +12,7 @@ jest.mock('../../models/documentoAyudaModel', () => ({
 const app = express();
 app.use(bodyParser.json());
 
-// Definimos una ruta de prueba que usa el controlador
+
 app.get('/desafio/:id_desafio/documentosayuda', documentoAyudaController.getDocumentosByDesafioId);
 
 describe('Documento Ayuda Controller Tests', () => {

@@ -1,9 +1,9 @@
-// tests/adminRoutes.test.js
+
 const request = require('supertest');
 const express = require('express');
-const adminRoutes = require('../../routes/adminRoutes'); // Actualiza la ruta si es diferente
+const adminRoutes = require('../../routes/adminRoutes'); 
 
-// Mock de los controladores
+
 jest.mock('../../controllers/adminController', () => ({
   updateUser: jest.fn((req, res) => res.status(200).send({ message: 'User updated successfully' })),
   deleteUser: jest.fn((req, res) => res.status(200).send({ message: 'User deleted successfully' })),
@@ -12,7 +12,7 @@ jest.mock('../../controllers/adminController', () => ({
 }));
 
 const app = express();
-app.use(express.json()); // Middleware para parsear JSON
+app.use(express.json()); 
 app.use('/admin-api', adminRoutes);
 
 describe('Admin Routes', () => {
