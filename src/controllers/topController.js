@@ -1,5 +1,8 @@
-const Progreso = require('../models/progresoModel');
+
+
 const Usuario = require('../models/usuarioModel');
+const Progreso = require('../models/progresoModel');
+
 const { Sequelize } = require('sequelize');
 
 exports.getAllUsersProgress = [

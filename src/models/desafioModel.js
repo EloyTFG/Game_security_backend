@@ -6,7 +6,7 @@ const Pista = require('./pistaModel');
 const DocumentoAyuda = require('./documentoAyudaModel'); 
 const DocumentoPrevencion = require('./documentoPrevencionModel');
 const Progreso = require('./progresoModel');  
-
+const Usuario = require('./usuarioModel');
 const Desafio = sequelize.define('Desafio', {
   id_desafio: {
     type: DataTypes.INTEGER,
@@ -39,6 +39,7 @@ const Desafio = sequelize.define('Desafio', {
 });
 
 Fase.hasMany(Desafio, { foreignKey: 'id_fase' });
+
 
 Desafio.hasMany(Pista, { foreignKey: 'id_desafio' });
 Pista.belongsTo(Desafio, { foreignKey: 'id_desafio' });

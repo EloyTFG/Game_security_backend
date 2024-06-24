@@ -9,13 +9,13 @@ const bodyParser = require('body-parser');
 const Usuario = require('./models/usuarioModel');
 const Rol = require('./models/rolModel');
 const Fase = require('./models/faseModel');
-
+const Desafio = require('./models/desafioModel');
 const DocumentoAyuda = require('./models/documentoAyudaModel');
 const DocumentoPrevencion = require('./models/documentoPrevencionModel');
 const Pista = require('./models/pistaModel');
 const Logro = require('./models/logroModel');
 const Progreso = require('./models/progresoModel');
-const Desafio = require('./models/desafioModel');
+
 const Usuario_Logro = require('./models/usuarioLogroModel');
 
 // Importar rutas
