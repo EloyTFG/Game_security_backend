@@ -6,6 +6,7 @@ const Pista = require('../models/pistaModel');
 const Usuario = require('../models/usuarioModel');
 const DocumentoAyuda = require('../models/documentoAyudaModel');
 const DocumentoPrevencion = require('../models/documentoPrevencionModel');
+const Progreso = require('../models/progresoModel');
 
 
 const verifyAdmin = async (req, res, next) => {
@@ -182,6 +183,7 @@ exports.deleteDesafio = [
 
       await DocumentoAyuda.destroy({ where: { id_desafio: id_desafio } });
       await DocumentoPrevencion.destroy({ where: { id_desafio: id_desafio } });
+      await Progreso.destroy({ where: { id_desafio: id_desafio } });
       await Pista.destroy({ where: { id_desafio: id_desafio } }); 
       await Desafio.destroy({ where: { id_desafio: id_desafio } });
 

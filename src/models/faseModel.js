@@ -24,4 +24,5 @@ Fase.init({
   timestamps: false,
 });
 
+
 module.exports = Fase;

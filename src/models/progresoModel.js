@@ -36,4 +36,5 @@ const Progreso = sequelize.define('Progreso', {
   tableName: 'Progreso'
 });
 
+
 module.exports = Progreso;
