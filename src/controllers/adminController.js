@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 const Usuario = require('../models/usuarioModel');
-
+const Progreso = require('../models/progresoModel');
 
 const verifyAdmin = async (req, res, next) => {
   try {
@@ -73,6 +73,8 @@ exports.deleteUser = [
       if (id_usuario === '1') {
         return res.status(400).json({ message: 'Cannot delete the administrator user.' });
       }
+
+      await Progreso.destroy({ where: { id_usuario: id_usuario } });
 
       await Usuario.destroy({ where: { id_usuario: id_usuario } });
 
